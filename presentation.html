@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=1024, user-scalable=no">
+
+	<title>Your deck.js Presentation</title>
+	
+	<!-- Required stylesheet -->
+	<link rel="stylesheet" href="deck.js/core/deck.core.css">
+	
+	<!-- Extension CSS files go here. Remove or add as needed. -->
+	<link rel="stylesheet" href="deck.js/extensions/goto/deck.goto.css">
+	<link rel="stylesheet" href="deck.js/extensions/menu/deck.menu.css">
+	<link rel="stylesheet" href="deck.js/extensions/navigation/deck.navigation.css">
+	<link rel="stylesheet" href="deck.js/extensions/status/deck.status.css">
+	<link rel="stylesheet" href="deck.js/extensions/hash/deck.hash.css">
+	<link rel="stylesheet" href="deck.js/extensions/scale/deck.scale.css">
+    <link rel="stylesheet" href="deck.js/extensions/codemirror/deck.codemirror.css">
+
+	<!-- Style theme. More available in /themes/style/ or create your own. -->
+	<link rel="stylesheet" href="deck.js/themes/style/swiss.css">
+	
+	<!-- Transition theme. More available in /themes/transition/ or create your own. -->
+	<link rel="stylesheet" href="deck.js/themes/transition/horizontal-slide.css">
+	
+	<!-- Required Modernizr file -->
+	<script src="deck.js/modernizr.custom.js"></script>
+
+    <link rel="stylesheet" href="deck.js/extensions/codemirror/themes/neat.css">
+</head>
+<body class="deck-container">
+
+<!-- Begin slides. Just make elements with a class of slide. -->
+
+<section class="slide">
+	<h1>What I learn from Pandas</h1>
+</section>
+
+<section class="slide">
+	<h2>Start using</h2>
+    <ol>
+      <li>
+          <div name="start_import" id="start_import" class="code" mode="python">from pandas import *</div>
+      </li>
+    </ol>
+</section>
+
+<section class="slide">
+	<h2>Lets load some data</h2>
+    <ol>
+        <li>
+          <div name="load_data" id="load_data" class="code" mode="python">df = read_csv("employment_by_qualification_fix.csv")</div>
+        </li>
+    </ol>
+</section>
+
+
+<section class="slide">
+    <h2>Lets Access Some Data</h2>
+    <ol>
+        <li>
+            <div name="access_data" id="access_data" class="code" mode="python">df['Sijil3'][1982]
+</div>
+        </li>
+    </ol>
+</section>
+
+<section class="slide">
+    <h2>A little explanation</h2>
+    <ol>
+        <li>
+            The data structure in pandas is DataFrame, and column is a Series. 
+        </li>
+        <li>
+            <div name="data_types" id="data_types" class="code" mode="python">type(df)
+type(df['Sijil3'])</div>
+        </li>
+    </ol>
+</section>
+
+<section class="slide">
+    <h2>Some more basic operation</h2>
+    <ol>
+        <li>
+            access by label, by default it is number
+        </li>
+        <li>
+            <div name="data_types" id="data_types" class="code" mode="python">df.xs(1982)
+df.xs(1999)</div>
+        </li>
+    </ol>
+</section>
+
+<section class="slide">
+    <h2>Some more basic operation</h2>
+    <ol>
+        <li>
+            you can slice data frame, 
+        </li>
+        <li>
+            <div name="data_types" id="data_types" class="code" mode="python">df[0:2]</div>
+        </li>
+    </ol>
+</section>
+
+<section class="slide">
+    <h2>More Selection</h2>
+    <ol>
+        <li>
+            You can also use some logical operation to filter value
+        </li>
+        <li>
+            <div name="logical_index" id="logical_index" class="code" mode="python">s=df['Tiadasijil']
+s[s&rsaquo;1000]</div>
+        </li>
+    </ol>
+</section>
+
+<section class="slide">
+    <h2>More selection redux</h2>
+    <ol>
+        <li>
+            Sometime you want to maintain the data shape, you can where, it maintain the structure of data
+        </li>
+        <li>
+            <div name="where_method" id="where_method" class="code" mode="python">s=df['Tiadasijil']
+s.where(s&rsaquo;1000)</div>
+        </li>
+    </ol>
+</section>
+
+<section class="slide">
+    <h2>Now we do stats</h2>
+    <ol>
+        <li>
+            One of the power of pandas is the stats tools that is available
+        </li>
+        <li>
+            <div name="basic_stats" id="basic_stats" class="code" mode="python">s=df['Tiadasijil']
+s.pct_change()
+s.mean()
+s.max()
+s.min()
+s.median()</div>
+        </li>
+    </ol>
+</section>
+
+<section class="slide">
+    <h2>Now the fun part do some plot it</h2>
+    <ol>
+        <li>
+            We can plot graph quite easily, but it is a bit tough to setup for beginner maybe, talk to me later if you wna to try
+        </li>
+        <li>
+            <div name="basic_plot" id="basic_plot" class="code" mode="python">import pylab
+s=df['Tiadasijil']
+s.plot()
+pylab.show()</div>
+
+        </li>
+    </ol>
+</section>
+
+<section class="slide">
+    <h2>Some advance graph</h2>
+    <ol>
+    <li>
+        <div name="stacked_plot" id="stacked_plot" class="code" mode="python">import pylab
+columns = [column for column in df.columns if column != "Jumlah2"]
+df[columns].plot(kind="bar", stacked=True)
+        </div>
+    </li>
+    </ol>
+</section>
+
+<section class="slide">
+    <h1>Thats all folks, any question? </h1>
+</section>
+<!-- End slides. -->
+
+
+<!-- Begin extension snippets. Add or remove as needed. -->
+
+<!-- deck.navigation snippet -->
+<a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+<a href="#" class="deck-next-link" title="Next">&#8594;</a>
+
+<!-- deck.status snippet -->
+<p class="deck-status">
+	<span class="deck-status-current"></span>
+	/
+	<span class="deck-status-total"></span>
+</p>
+
+<!-- deck.goto snippet -->
+<form action="." method="get" class="goto-form">
+	<label for="goto-slide">Go to slide:</label>
+	<input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+	<datalist id="goto-datalist"></datalist>
+	<input type="submit" value="Go">
+</form>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<!-- End extension snippets. -->
+
+
+<!-- Required JS files. -->
+<script src="deck.js/jquery-1.7.2.min.js"></script>
+<script src="deck.js/core/deck.core.js"></script>
+
+<!-- Extension JS files. Add or remove as needed. -->
+<script src="deck.js/core/deck.core.js"></script>
+<script src="deck.js/extensions/hash/deck.hash.js"></script>
+<script src="deck.js/extensions/menu/deck.menu.js"></script>
+<script src="deck.js/extensions/goto/deck.goto.js"></script>
+<script src="deck.js/extensions/status/deck.status.js"></script>
+<script src="deck.js/extensions/navigation/deck.navigation.js"></script>
+<script src="deck.js/extensions/scale/deck.scale.js"></script>
+<script src="deck.js/extensions/codemirror/codemirror.js"></script>
+
+<script src="deck.js/extensions/codemirror/mode/python/python.js"></script>
+
+<script src="deck.js/extensions/codemirror/deck.codemirror.js"></script>
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+	$(function() {
+		$.deck('.slide');
+	});
+</script>
+</body>
+</html>
